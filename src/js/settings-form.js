@@ -26,6 +26,7 @@ export default class SettingsForm {
     this.$showStatsNotifications = document.getElementById(
       'show-stats-notifications'
     );
+    this.$includeLink = document.getElementById('include-link');
   }
 
   assignValues() {
@@ -36,6 +37,7 @@ export default class SettingsForm {
       this.$showBadges.checked = settings.showBadges;
       this.$showStats.checked = settings.showStats;
       this.$showStatsNotifications.checked = settings.showStatsNotifications;
+      this.$includeLink.checked = settings.includeLink;
     });
   }
 
@@ -57,7 +59,8 @@ export default class SettingsForm {
         prependIcon: this.$prependIcon.checked,
         showBadges: this.$showBadges.checked,
         showStats: this.$showStats.checked,
-        showStatsNotifications: this.$showStatsNotifications.checked
+        showStatsNotifications: this.$showStatsNotifications.checked,
+        includeLink: this.$includeLink.checked,
       })
       .then(() => this.t.closePopup());
   }
