@@ -41,17 +41,17 @@ export default class TaskForm {
     return new Task(this.t).handleUpdate({ priority: val });
   }
 
-  handleSubmit() {
+  async handleSubmit() {
     this.$submitButton.disabled = true;
     const priority = Number(this.$priority.value);
 
-    this.storage
-      .getTask()
-      .then(task => task.priority !== priority && this.updatePriority(priority))
-      .then(() => {
-		  this.t.closePopup();
-		  this.notify(`Task was set to "priorityText[priority]"`, 'success');
-	  });
+    this.storage.getTask()
+		.then(task => {
+				this.notify(`Task "${task.text}" was set to ${priorityText[priority]}`, 'success');
+				return task;
+			})
+		.then(task.priority !== priority && this.updatePriority(priority))
+		.then(this.t.closePopup());
   }
   
   notify(message, display = 'info') {
