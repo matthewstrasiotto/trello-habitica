@@ -25,6 +25,13 @@ const priorityIcon = {
   2: ICONS.HARD
 };
 
+const priorityText = {
+  0.1: "\u2B50",
+  1: "\u2B50\u2B50",
+  1.5: "\u2B50\u2B50\u2B50",
+  2: "\u2B50\u2B50\u2B50\u2B50"
+};
+
 // eslint-disable-next-line no-undef
 TrelloPowerUp.initialize({
   'board-buttons': async t => {
@@ -117,11 +124,11 @@ TrelloPowerUp.initialize({
 
     return [
       {
-        title: 'To-Do',
-        text: 'Edit',
+        title: 'Difficulty',
+        text: '\u2B50',
         callback: tt =>
           tt.popup({
-            title: 'Edit To-Do',
+            title: 'Edit Difficulty',
             url: './edit-task.html',
             height: 240
           })
