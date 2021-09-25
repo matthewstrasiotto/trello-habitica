@@ -45,6 +45,7 @@ export default class Task {
         notes: res.data.notes,
         priority: res.data.priority,
         date: res.data.date,
+		//tags: res.data.tags
       })
     );
   }

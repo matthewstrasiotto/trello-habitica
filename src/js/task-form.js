@@ -49,7 +49,7 @@ export default class TaskForm {
       .getTask()
       .then(task => task.priority !== priority && this.updatePriority(priority))
       .then(() => this.t.closePopup())
-	  .then(() => this.notify(`Task "${task.name}" was set to "priorityText[${task.priority}]"`, 'success'));
+	  .then(() => this.notify(`Task was set to "priorityText[${task.priority}]"`, 'success'));
   }
   
   notify(message, display = 'info') {
