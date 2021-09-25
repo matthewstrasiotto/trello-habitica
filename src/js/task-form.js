@@ -1,6 +1,13 @@
 import Storage from './storage';
 import Task from './task';
 
+const priorityText = {
+  0.1: "Trivial",
+  1: "Easy",
+  1.5: "Medium",
+  2: "Hard"
+};
+
 export default class TaskForm {
   constructor(trello, storage = new Storage(trello)) {
     this.t = trello;
@@ -41,6 +48,19 @@ export default class TaskForm {
     this.storage
       .getTask()
       .then(task => task.priority !== priority && this.updatePriority(priority))
-      .then(() => this.t.closePopup());
+      .then(() => this.t.closePopup())
+	  .then(() => this.notify(`Task "${task.name}" was set to "priorityText[${task.priority}]"`, 'success'));
+  }
+  
+      this.notify(`List "${list.name}" was successfully unmarked`, 'success');
+    return this.storage.setLists(lists);
+  }
+
+  notify(message, display = 'info') {
+    this.t.alert({
+      message,
+      display,
+      duration: 5 // min is 5
+    });
   }
 }
