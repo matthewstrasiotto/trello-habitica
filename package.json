@@ -1,6 +1,9 @@
 {
   "name": "trello-habitica",
-  "repository": "https://github.com/alexktzk/trello-habitica",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Lunkle/trello-habitica.git"
+  },
   "description": "Trello Power-Up for Habitica.",
   "version": "1.1.1",
   "main": "webpack.config.dev.js",
@@ -16,10 +19,10 @@
     "deploy": "npm run build && npm run publish && npm run clean-dist"
   },
   "dependencies": {
-    "compression": "^1.7.1",
-    "cors": "^2.8.4",
-    "express": "^4.16.2",
-    "node-nocache": "^1.0.4"
+    "compression": "^1.7.4",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "node-nocache": "^1.0.5"
   },
   "engines": {
     "node": "9.x"
@@ -33,28 +36,38 @@
   ],
   "license": "MIT",
   "devDependencies": {
-    "@babel/core": "^7.3.4",
-    "@babel/plugin-transform-runtime": "^7.3.4",
-    "@babel/preset-env": "^7.3.4",
-    "@babel/runtime": "^7.3.4",
-    "babel-eslint": "^10.0.1",
-    "babel-jest": "^26.3.0",
-    "babel-loader": "^8.0.5",
+    "@babel/core": "^7.15.5",
+    "@babel/plugin-transform-runtime": "^7.15.0",
+    "@babel/preset-env": "^7.15.6",
+    "@babel/runtime": "^7.15.4",
+    "babel-eslint": "^10.1.0",
+    "babel-jest": "^26.6.3",
+    "babel-loader": "^8.2.2",
     "cpy-cli": "^3.1.1",
-    "eslint": "^5.3.0",
-    "eslint-config-airbnb": "^17.1.0",
-    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb": "^17.1.1",
+    "eslint-config-airbnb-base": "^13.2.0",
     "eslint-config-prettier": "^4.3.0",
-    "eslint-plugin-import": "^2.17.2",
-    "eslint-plugin-prettier": "^3.1.0",
-    "fetch-mock": "^7.3.0",
+    "eslint-plugin-import": "^2.24.2",
+    "eslint-plugin-prettier": "^3.4.1",
+    "fetch-mock": "^7.7.3",
+    "gh-pages": "^3.2.3",
     "html-webpack-plugin": "^3.2.0",
-    "jest": "^26.4.2",
-    "node-fetch": "^2.6.1",
+    "jest": "^26.6.3",
+    "node-fetch": "^2.6.5",
     "push-dir": "^0.4.1",
-    "rimraf": "^2.6.3",
-    "webpack": "^4.29.6",
+    "rimraf": "^2.7.1",
+    "webpack": "^4.46.0",
     "webpack-cli": "^3.3.12",
-    "webpack-dev-server": "^3.11.0"
-  }
+    "webpack-dev-server": "^3.11.2"
+  },
+  "bugs": {
+    "url": "https://github.com/Lunkle/trello-habitica/issues"
+  },
+  "homepage": "https://github.com/Lunkle/trello-habitica#readme",
+  "directories": {
+    "doc": "docs",
+    "test": "test"
+  },
+  "author": ""
 }
