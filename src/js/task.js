@@ -19,7 +19,7 @@ export default class Task {
   async getTemplate(card) {
     const cardUrl = `https://trello.com/c/${card.shortLink}`;
     const settings = await this.storage.getSettings();
-    const icon = settings.prependIcon ? `![](${ICONS.TRELLO_LOGO})&ensp;` : '';
+    const icon = settings.prependIcon ? `![](${ICONS.TRELLO_LOGO})\n` : '';
     const notesLink = settings.includeLink ? `[Open in Trello](${cardUrl})` : '';
     const notesDesc = settings.includeDesc ? `${card.desc}` : '';
     const dueDate = card.due != null ? `${card.due}` : '';
@@ -28,8 +28,8 @@ export default class Task {
     return {
       type: 'todo',
       priority: settings.priority,
-      text: `${icon}${card.name}`,
-      notes: `${notesDesc}${notesNewLine}${notesLink}`,
+      text: `${card.name}`,
+      notes: `${icon}${notesDesc}${notesNewLine}${notesLink}`,
       date: `${dueDate}`,
     };
   }
