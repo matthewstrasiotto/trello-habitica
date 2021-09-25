@@ -52,10 +52,6 @@ export default class TaskForm {
 	  .then(() => this.notify(`Task "${task.name}" was set to "priorityText[${task.priority}]"`, 'success'));
   }
   
-      this.notify(`List "${list.name}" was successfully unmarked`, 'success');
-    return this.storage.setLists(lists);
-  }
-
   notify(message, display = 'info') {
     this.t.alert({
       message,
