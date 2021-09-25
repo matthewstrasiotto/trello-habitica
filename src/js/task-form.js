@@ -48,8 +48,13 @@ export default class TaskForm {
     this.storage
       .getTask()
       .then(task => task.priority !== priority && this.updatePriority(priority))
-      .then(() => this.t.closePopup())
-	  .then(() => this.notify(`Task was set to `, 'success'));
+      .then(() => {
+		  this.t.closePopup();
+		  this.t.alert({
+				'Task was set to ',
+				'success',
+				duration: 5});
+	  });
   }
   
   notify(message, display = 'info') {
