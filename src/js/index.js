@@ -26,10 +26,10 @@ const priorityIcon = {
 };
 
 const priorityText = {
-  0.1: "\u2B50",
-  1: "\u2B50\u2B50",
-  1.5: "\u2B50\u2B50\u2B50",
-  2: "\u2B50\u2B50\u2B50\u2B50"
+  0.1: "Trivial",
+  1: "Easy",
+  1.5: "Medium",
+  2: "Hard"
 };
 
 // eslint-disable-next-line no-undef
@@ -125,7 +125,7 @@ TrelloPowerUp.initialize({
     return [
       {
         title: 'Difficulty',
-        text: '\u2B50',
+        text: priorityText[taskData.priority],
         callback: tt =>
           tt.popup({
             title: 'Edit Difficulty',
