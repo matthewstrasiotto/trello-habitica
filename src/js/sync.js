@@ -51,19 +51,14 @@ export default class Sync {
   }
 
   handle(taskData, listType) {
-	alert(taskData.date + " " + this.storage.getTask().date);
-	if(taskData.id) {
-		if(taskData.date) {
-			if(taskData.date != this.storage.getTask().date) {
-				return this.currentTask().handleChangeDate(taskData.date);
-			}
-		}
-	}
     if (listType === LIST_TYPES.DOING) {
       if (taskData.id) {
         if (taskData.done) {
           return this.currentTask().handleUndo();
-        }
+        } else if(taskData.date && (taskData.date != this.storage.getTask().date)) {
+				return this.currentTask().handleChangeDate(taskData.date);
+			}
+		}
       } else {
         return this.currentTask().handleAdd();
       }
