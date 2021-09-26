@@ -21,7 +21,7 @@ export default class Task {
     const settings = await this.storage.getSettings();
     const icon = settings.prependIcon ? `![](${ICONS.TRELLO_LOGO})\n` : '';
     const notesLink = settings.includeLink ? `[Open in Trello](${cardUrl})` : '';
-    const notesDesc = settings.includeDesc ? `${card.desc.replace(/\n/g, '\n\n')}` : '';
+    const notesDesc = settings.includeDesc ? `${card.desc.replace(/\n/g, '  \n')}` : '';
     const dueDate = card.due != null ? `${card.due}` : '';
     const notesNewLine = card.desc.length > 0 && settings.includeLink ? `  \n` : '';
 
