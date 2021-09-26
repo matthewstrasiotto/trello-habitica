@@ -74,11 +74,20 @@ export default class Sync {
         if (taskData.done) {
           return this.currentTask()
             .handleUndo()
-            .then(() => this.currentTask().handleRemove());
+            .then(() => this.currentTask().handleRemove())
+			.then(() => this.notify(`Task "${this.currentTask().text}" was removed`, 'success'));
         } else {
           return this.currentTask().handleRemove();
         }
       }
     }
+  }
+  
+  notify(message, display = 'info') {
+    this.t.alert({
+      message,
+      display,
+      duration: 5 // min is 5
+    });
   }
 }
