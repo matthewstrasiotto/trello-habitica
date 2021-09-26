@@ -56,8 +56,7 @@ export default class Sync {
         if (taskData.done) {
           return this.currentTask().handleUndo();
         } else if(taskData.date && (taskData.date != this.storage.getTask().date)) {
-				return this.currentTask().handleChangeDate(taskData.date);
-			}
+			this.currentTask().handleChangeDate(taskData.date);
 		}
       } else {
         return this.currentTask().handleAdd();
