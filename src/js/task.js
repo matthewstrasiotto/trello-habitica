@@ -30,7 +30,7 @@ export default class Task {
       priority: settings.priority,
       text: `${card.name}`,
       notes: `${icon}${notesLink}${notesNewLine}${notesDesc}`,
-      date: `${dueDate}`,
+      date: `${dueDate}`
     };
   }
 
@@ -44,8 +44,7 @@ export default class Task {
 			text: res.data.text,
 			notes: res.data.notes,
 			priority: res.data.priority,
-			date: res.data.date,
-			//tags: res.data.tags
+			date: res.data.date
 		  })
 		)
 		.then(() => this.notify(`Task "${card.name}" was added`, 'success'));
