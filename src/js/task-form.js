@@ -46,12 +46,9 @@ export default class TaskForm {
     const priority = Number(this.$priority.value);
 
     this.storage.getTask()
-		.then(task => {
-				this.notify(`Task "${task.text}" was set to ${priorityText[priority]}`, 'success');
-				return task;
-			})
 		.then(task.priority !== priority && this.updatePriority(priority))
-		.then(this.t.closePopup());
+		.then(this.t.closePopup())
+		.then(this.storage.getTask().then(task => this.notify(`Task "${task.text}" was set to ${priorityText[priority]}`, 'success')));
   }
   
   notify(message, display = 'info') {
