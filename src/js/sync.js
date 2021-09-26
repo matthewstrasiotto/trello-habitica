@@ -51,6 +51,7 @@ export default class Sync {
   }
 
   handle(taskData, listType) {
+	alert(taskData.date + " " + this.storage.getTask().date);
 	if(taskData.id) {
 		if(taskData.date) {
 			if(taskData.date != this.storage.getTask().date) {
