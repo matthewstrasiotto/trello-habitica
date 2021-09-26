@@ -39,15 +39,16 @@ export default class Task {
     const params = await this.getTemplate(card);
 
     return this.API.addTask(params).then(res =>
-      this.storage.setTask({
-        id: res.data.id,
-        text: res.data.text,
-        notes: res.data.notes,
-        priority: res.data.priority,
-        date: res.data.date,
-		//tags: res.data.tags
-      })
-    );
+		  this.storage.setTask({
+			id: res.data.id,
+			text: res.data.text,
+			notes: res.data.notes,
+			priority: res.data.priority,
+			date: res.data.date,
+			//tags: res.data.tags
+		  })
+		)
+		.then(() => this.notify(`Task "${card.name}" was added`, 'success'));
   }
 
   async handleRemove() {
