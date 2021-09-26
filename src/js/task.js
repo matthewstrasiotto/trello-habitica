@@ -31,11 +31,13 @@ export default class Task {
       text: `${card.name}`,
       notes: `${icon}${notesDesc}${notesNewLine}${notesLink}`,
       date: `${dueDate}`,
+	  tags: `${card.labels}`
     };
   }
 
   async handleAdd() {
-    const card = await this.t.card('name', 'shortLink', 'due', 'desc');
+	//badges, checkItemStates, closed, dateLastActivity, desc, descData, due, email, idBoard, idChecklists, idLabels, idList, idMembers, idShort, idAttachmentCover, manualCoverAttachment, labels, name, pos, shortUrl, url
+    const card = await this.t.card('name', 'shortLink', 'due', 'desc', 'labels');
     const params = await this.getTemplate(card);
 
     return this.API.addTask(params).then(res =>
@@ -45,7 +47,7 @@ export default class Task {
 			notes: res.data.notes,
 			priority: res.data.priority,
 			date: res.data.date,
-			//tags: res.data.tags
+			tags: res.data.tags
 		  })
 		)
 		.then(() => this.notify(`Task "${card.name}" was added`, 'success'));
