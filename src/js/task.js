@@ -29,7 +29,7 @@ export default class Task {
       type: 'todo',
       priority: settings.priority,
       text: `${card.name}`,
-      notes: `${icon}${notesDesc}${notesNewLine}${notesLink}`,
+      notes: `${icon}${notesLink}${notesNewLine}${notesDesc}`,
       date: `${dueDate}`,
     };
   }
