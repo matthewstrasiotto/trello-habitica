@@ -53,7 +53,9 @@ export default class Task {
   async handleRemove() {
     const task = await this.storage.getTask();
 
-    return this.API.removeTask(task.id).then(() => this.storage.removeTask());
+    return this.API.removeTask(task.id)
+		.then(() => this.storage.removeTask())
+		.then(() => this.notify(`Task "${task.text}" was removed`, 'success'));
   }
 
   async handleDo() {
@@ -85,4 +87,13 @@ export default class Task {
       })
     );
   }
+  
+  notify(message, display = 'info') {
+    this.t.alert({
+      message,
+      display,
+      duration: 5 // min is 5
+    });
+  }
+  
 }
