@@ -80,6 +80,13 @@ export default class Task {
         .then(() => this.currentUser.updateStats(res.data))
     );
   }
+  
+  async handleChangeDate({ date }) {
+	  const task = await this.storage.getTask();
+	  return this.API.updateTask(task.id, { date })
+		.then(res => this.storage.setTask({ date: res.data.date }))
+		.then(() => this.notify(`Task "${task.text}"'s due date was updated`, 'success'));
+  }
 
   async handleUpdate({ priority }) {
     const task = await this.storage.getTask();

@@ -51,6 +51,13 @@ export default class Sync {
   }
 
   handle(taskData, listType) {
+	if(taskData.id) {
+		if(taskData.date) {
+			if(taskData.date != this.storage.getTask().date) {
+				return this.currentTask().handleChangeDate(taskData.date);
+			}
+		}
+	}
     if (listType === LIST_TYPES.DOING) {
       if (taskData.id) {
         if (taskData.done) {
@@ -70,24 +77,16 @@ export default class Sync {
           .then(() => this.currentTask().handleDo());
       }
     } else {
-      if (taskData.id) {
-        if (taskData.done) {
-          return this.currentTask()
-            .handleUndo()
-            .then(() => this.currentTask().handleRemove())
-			.then(() => this.notify(`Task "${this.currentTask().text}" was removed`, 'success'));
-        } else {
-          return this.currentTask().handleRemove();
-        }
-      }
+	  if (taskData.id) {
+		if (taskData.done) {
+		  return this.currentTask()
+			.handleUndo()
+			.then(() => this.currentTask().handleRemove());
+		} else {
+		  return this.currentTask().handleRemove();
+		}
+	  }
     }
   }
   
-  notify(message, display = 'info') {
-    this.t.alert({
-      message,
-      display,
-      duration: 5 // min is 5
-    });
-  }
 }
