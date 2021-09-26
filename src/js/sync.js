@@ -81,4 +81,13 @@ export default class Sync {
       }
     }
   }
+  
+  notify(message, display = 'info') {
+    this.t.alert({
+      message,
+      display,
+      duration: 5 // min is 5
+    });
+  }
+  
 }
