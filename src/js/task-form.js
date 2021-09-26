@@ -45,9 +45,13 @@ export default class TaskForm {
     this.$submitButton.disabled = true;
     const priority = Number(this.$priority.value);
 
-    const task = await this.storage.getTask().then(task.priority !== priority && this.updatePriority(priority));
-	this.t.closePopup();
-	this.notify(`Task "${task.text}" was set to ${priorityText[priority]}`, 'success');
+    this.storage.getTask()
+		.then(task => {
+				this.notify(`Task "${task.text}" was set to ${priorityText[priority]}`, 'success');
+				return task;
+			})
+		.then(task.priority !== priority && this.updatePriority(priority))
+		.then(this.t.closePopup());
   }
   
   notify(message, display = 'info') {
