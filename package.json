@@ -13,10 +13,12 @@
     "copy-files": "cpy src/*.html dist && cpy src/changelog dist/changelog",
     "watch": "webpack --watch",
     "build": "webpack --config webpack.config.prod.js",
+    "build-dev": "webpack --config webpack.config.dev.js",
     "prestart": "npm run clean-dist && npm run copy-files",
     "start": "webpack --config webpack.config.dev.js && webpack-dev-server --config webpack.config.dev.js",
     "publish": "push-dir --dir=dist --branch=gh-pages --cleanup",
-    "deploy": "npm run build && npm run publish && npm run clean-dist"
+    "deploy": "npm run build && npm run publish && npm run clean-dist",
+    "deploy-dev": "npm run build-dev && npm run publish && npm run clean-dist"
   },
   "dependencies": {
     "compression": "^1.7.4",
